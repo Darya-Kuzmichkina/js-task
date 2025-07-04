@@ -7,13 +7,15 @@
 
 </head>
 <body>
-     <div class="slider" style="display: flex;">
-         <button id="prev">← Назад</button>
-    <img id="0" src="img1.webp" alt="Слайд 1" style="width: 200px;height: 200px; display: block;">
-    <img id="1" src="img2.jpeg" alt="Слайд 2" style="width: 200px;height: 200px; display: none;" >
-    <img id="2" src="img3.jpg" alt="Слайд 3" style="width: 200px;height: 200px; display: none;">
-    <button id="next">Вперёд →</button>
-  </div>
+    <div class="slider"  style="display: flex; gap: 10px; justify-content: center;align-items: center;">
+        <button id="prev" style="height: 30px;">← Назад</button>
+        <div  style="display: flex; flex-direction: column; justify-content: center;align-items: center;">
+        <img src="" alt="Слайд" id="slide-image" style="width: 200px;height: 200px;">
+        <h2 id="slide-title"></h2>
+        <p id="slide-description"></p>
+        </div>
+        <button id="next" style="height: 30px;">Вперёд →</button>
+    </div>
         <script src="app.js"></script>
 </body>
 </html>

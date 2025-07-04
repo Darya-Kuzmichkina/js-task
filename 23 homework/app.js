@@ -1,35 +1,48 @@
 // Создайте веб-страницу, на которой будет слайдер из трёх изображений. 
 // Пользователь должен иметь возможность переключать картинки с помощью стрелок “влево” и “вправо”.
 
-// Button left
-// Image 
-// Button right
-
-//  1. Отобразить 3 разные картинки, но одновременно показывать только одну.
-//  2. Добавить 2 кнопки: “Назад” и “Вперёд”.
-//  3. При нажатии на кнопки — менять изображение.
-//  4. Когда слайдер доходит до последней картинки и нажимается “Вперёд” — он возвращается к первой.
-//  5. Когда нажимается “Назад” на первой — показывается последняя.
-
 const buttonPrev = document.querySelector('#prev');
 const buttonNext = document.querySelector('#next');
-const img = document.querySelectorAll('img');
-const div = document.querySelectorAll('.slider');
+const slideImage = document.querySelector('#slide-image');
+const slideTitle = document.querySelector('#slide-title');
+const slideDescription = document.querySelector('#slide-description');
 let imgId =0;
+const slides = [
+    {
+        img: "img1.webp",
+        title: "букет 'Нежный'",
+        description: "Каждый букет — это история любви"
+    },
+    {
+        img: "img2.jpeg",
+        title: "букет 'Розы пестрые'",
+        description: "Подарите радость с каждым лепестком!"
+    },
+    {
+        img: "img3.jpg",
+        title: "букет 'Голубая гортензия'",
+        description: "Цветы для каждого мгновения"
+    }
+];
+
 function scroll() {
-    img.forEach((imgs, i) => {
-        imgs.style.display = i === imgId ? 'block' : 'none';
-    });
+    const currentSlide = slides[imgId];
+    slideImage.src = currentSlide.img;
+    slideTitle.textContent = currentSlide.title;
+    slideDescription.textContent = currentSlide.description;
 }
-buttonNext.addEventListener('click',()=>{
-   imgId=(imgId === img.length - 1) ? 0 : imgId + 1;
+buttonNext.addEventListener('click', next=()=>{
+   imgId=(imgId === slides.length - 1) ? 0 : imgId + 1;
       scroll();
 
 });
   buttonPrev.addEventListener('click', () => {
-        imgId = (imgId === 0) ? (img.length - 1) : (imgId - 1); 
+        imgId = (imgId === 0) ? (slides.length - 1) : (imgId - 1); 
         scroll();
     });
    scroll();
 
-
+setInterval(() => {
+    imgId = (imgId === slides.length - 1) ? 0 : imgId + 1;
+    scroll();
+}, 3000);
