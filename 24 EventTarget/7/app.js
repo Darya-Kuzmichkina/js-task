@@ -1,9 +1,22 @@
-// Добавляйте задачи в список <ul> из input, по нажатию на кнопку.
+// Создайте форму с выпадающим списком для выбора единицы измерения
+// (например, дюймы, сантиметры, метры). При выборе единицы измерения
+// отображайте соответствующее значение в консоли.
+const list = document.querySelector('ul');
 const button = document.querySelector('button');
-const input = document.querySelector('input');
-const ul = document.querySelector('ul');
-button.addEventListener('click',()=>{
-    const li = document.createElement('li');
-    li.textContent= input.value;
-    ul.appendChild(li);
-})
+
+let flag = false;
+
+button.addEventListener('click', () => {
+    if (!flag) {
+        list.style.display='block';
+    flag=true;
+   }
+   else{
+     list.style.display='none';
+    flag=false;
+   }
+});
+list.addEventListener('click', (event) => {
+    console.log(event.target);
+    
+    });
