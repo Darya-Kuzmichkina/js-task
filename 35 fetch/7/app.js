@@ -1,18 +1,10 @@
-// Создайте класс Person с атрибутом name. Наследуйте от него класс Employee, добавив атрибуты
-// position и monthly_salary. Реализуйте метод getAnnualSalary(), возвращающий годовую зарплату.
-// Входные: Employee("Alice", "Developer", 5000) → Результат: 60000
-// Входные: Employee("Bob", "Manager", 7000) → Результат: 84000
-// Входные: Employee("Charlie", "Designer", 4000) → Результат: 48000
-class Person {
-    name = 'Alice'
-}
-class Employee extends Person {
-    position = 'Developer';
-    monthly_salary = 5000;
-    getAnnualSalary() {
-console.log(this.monthly_salary*12);
-
-    }
-}
-const employee= new Employee();
-employee.getAnnualSalary();
+// Нужно создать кнопку, чтобы при нажатии на неё программа отправляла GET-запрос по
+// ссылке https://api.ipify.org?format=json, получала от сервера ответ с вашим текущим IP-адресом
+// и отображала его на странице.const button = document.querySelector('button');
+const button = document.querySelector('button');
+const p = document.querySelector('p');
+button.addEventListener('click',async()=>{
+       const response = await fetch(`https://api.ipify.org?format=json`, { method: 'GET' });
+            const info = await response.json();
+            return p.textContent= info.ip;
+})

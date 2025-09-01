@@ -1,23 +1,15 @@
-// Создайте класс NumberGenerator с методом generateNumbers(size), который возвращает массив
-// чисел от 1 до size. Наследуйте от него класс EvenNumbers, добавив метод getEvenNumbers(size),
-// который вызывает generateNumbers(size) и фильтрует только четные числа.
-// Входные: new EvenNumbers().getEvenNumbers(6) → Результат: [2, 4, 6]
-// Входные: new EvenNumbers().getEvenNumbers(10) → Результат: [2, 4, 6, 8, 10]
-// Входные: new EvenNumbers().getEvenNumbers(3) → Результат: [2]
-class NumberGenerator {
-    generateNumbers(size) {
-        let arr = [];
-        for (let i = 1; i <= size; i++) {
-arr.push(i);
-        }
-        return arr;
-    }
-}
-class EvenNumbers extends NumberGenerator {
-    getEvenNumbers(size) {
-        const res= this.generateNumbers(size)
-return res.filter(el=> el%2===0)
-    }
-}
-const result= new EvenNumbers();
-console.log(result.getEvenNumbers(6));
+// 5. Нужно создать поле для ввода и кнопку, чтобы при нажатии на неё программа брала
+// введённое пользователем имя, выводила его в консоль, а затем подставляла это имя в ссылку
+// https://api.nationalize.io/?name=... чтобы отправить GET-запрос и получить от сервера
+// информацию о странах, с которыми это имя ассоциируется чаще всего, включая вероятность
+// для каждой страны.
+ const btn = document.querySelector('button');
+        const input = document.querySelector('input');
+
+        btn.addEventListener('click', async () => {
+            const response = await fetch(`https://api.nationalize.io/?name=${input.value}`, { method: 'GET' });
+            const info = await response.json();
+console.log(info);
+
+    
+        });
